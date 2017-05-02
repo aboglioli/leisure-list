@@ -3,6 +3,8 @@ export enum ListType {
 }
 
 export interface List {
+  getId(): string,
+  setId(id: string),
   getName(): string,
   setName(name: string),
   getType(): ListType,
@@ -11,18 +13,31 @@ export interface List {
 }
 
 export class MoviesList implements List {
+  private id: string;
   private name: string;
   private type: ListType;
   private elements: any[];
 
-  constructor(name: string){
+  constructor(name: string, id?: string){
     this.name = name;
     this.type = ListType.MOVIES;
+
+    if(id) {
+      this.id = id;
+    }
 
     this.elements = [];
   }
 
-  getName() {
+  getId(): string {
+    return this.id;
+  }
+
+  setId(id: string) {
+    this.id = id;
+  }
+
+  getName(): string {
     return this.name;
   }
 

@@ -9,6 +9,7 @@ import { GamesComponent } from './games/games.component';
 import { MusicComponent } from './music/music.component';
 import { ListsNavbarComponent } from './lists-navbar/lists-navbar.component';
 import { CreateListComponent } from './create-list/create-list.component';
+import { SearchListComponent } from './search-list/search-list.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { CreateListComponent } from './create-list/create-list.component';
     CreateListComponent,
     MoviesComponent,
     GamesComponent,
-    MusicComponent
+    MusicComponent,
+    SearchListComponent
   ]
 })
 export class ListsModule { }

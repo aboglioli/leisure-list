@@ -1,5 +1,10 @@
 .lists-navbar {
+  display: flex;
   padding: 1rem;
+
+  .flex {
+    flex: 10;
+  }
 
   .menu-list {
     overflow: hidden;

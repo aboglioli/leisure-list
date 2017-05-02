@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
 import { ListsModule } from './lists/lists.module';
 
+import './operators';
 
 @NgModule({
   declarations: [

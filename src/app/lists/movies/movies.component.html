@@ -7,8 +7,22 @@
       </div>
     </ll-card>
   </div>
+  <div class="col-xs-8">
+    <ll-card>
+      <div title>Filtrar</div>
+      <div body>
+        <ll-search-list (search)="filterLists($event)"></ll-search-list>
+      </div>
+    </ll-card>
+  </div>
+</div>
 
-  <div class="col-xs-4" *ngFor="let list of listService.getObservable() | async">
+<div class="row" *ngIf="filteredLists.length > 0">
+  <div class="col-xs-12">
+    <h1>Mis listas</h1>
+  </div>
+
+  <div class="col-xs-4" *ngFor="let list of filteredLists">
     <ll-card>
       <div title>
         {{list.getName()}}

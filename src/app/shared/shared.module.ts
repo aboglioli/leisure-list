@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 
-import { LoginService, TheMovieDbService, ListService } from './services';
+import { LoginService, TheMovieDbService, ListService, DatabaseService } from './services';
 import { PanelComponent } from './core/panel/panel.component';
 import { CardComponent } from './core/card/card.component';
 
@@ -27,7 +27,8 @@ export class SharedModule {
       providers: [
         LoginService,
         ListService,
-        TheMovieDbService
+        TheMovieDbService,
+        DatabaseService
       ]
     };
   }

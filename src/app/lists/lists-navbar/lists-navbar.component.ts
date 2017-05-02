@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { LoginService } from '../../shared/services';
 
 @Component({
   selector: 'll-lists-navbar',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListsNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+              private loginService: LoginService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/']);
   }
 
 }

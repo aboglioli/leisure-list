@@ -1,0 +1,19 @@
+form {
+  display: flex;
+
+  input {
+    border: 1px solid #eee;
+    border-right: none;
+    flex: 10;
+    padding: 0.8rem 0.5rem;
+  }
+
+  button {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    color: #555;
+    flex: 0;
+    padding: 0.8rem 0.5rem;
+  }
+
+}

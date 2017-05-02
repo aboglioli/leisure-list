@@ -4,8 +4,16 @@ import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 @Injectable()
 export class LoginService {
   private loggedIn: boolean;
+  private uid: string;
 
   constructor(private fb: AngularFire) {
+    this.getState().subscribe(user => {
+      this.uid = user.uid;
+    });
+  }
+
+  getUserId(): string {
+    return this.uid;
   }
 
   getState() {
