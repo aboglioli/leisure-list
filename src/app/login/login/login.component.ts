@@ -7,7 +7,7 @@ import { AuthProviders } from 'angularfire2';
 import { LoginService } from '../../shared/services';
 
 @Component({
-  selector: 'app-login',
+  selector: 'll-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

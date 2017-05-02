@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-xs-4">
+    <ll-card>
+      <div title>Nueva lista</div>
+      <div body>
+        <ll-create-list listType="movies"></ll-create-list>
+      </div>
+    </ll-card>
+  </div>
+
+  <div class="col-xs-4" *ngFor="let list of listService.getObservable() | async">
+    <ll-card>
+      <div title>
+        {{list.getName()}}
+      </div>
+      <div body>
+        Body
+      </div>
+    </ll-card>
+  </div>
+</div>

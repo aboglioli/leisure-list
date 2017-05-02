@@ -2,12 +2,34 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ListsComponent } from './lists/lists.component';
+import { MoviesComponent } from './movies/movies.component';
+import { GamesComponent } from './games/games.component';
+import { MusicComponent } from './music/music.component';
 
 const routes: Routes = [
   {
     path: 'lists',
-    component: ListsComponent
-  }
+    component: ListsComponent,
+    children: [
+      {
+        path: 'movies',
+        component: MoviesComponent
+      },
+      {
+        path: 'games',
+        component: GamesComponent
+      },
+      {
+        path: 'music',
+        component: MusicComponent
+      },
+      {
+        path: '',
+        redirectTo: 'movies',
+        pathMatch: 'full'
+      }
+    ]
+  },
 ];
 
 @NgModule({

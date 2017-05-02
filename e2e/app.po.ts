@@ -6,6 +6,6 @@ export class LeisureListPage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('ll-root h1')).getText();
   }
 }
