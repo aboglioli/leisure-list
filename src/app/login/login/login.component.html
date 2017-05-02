@@ -1,1 +1,12 @@
-login service
+<div *ngIf="loading">
+  Loading...
+</div>
+
+<form [formGroup]="loginForm" (submit)="$event.preventDefault(); login()">
+  <input formControlName="email" type="text"  placeholder="E-Mail" />
+  <input formControlName="password" type="password" placeholder="Contraseña" />
+
+  <button
+      [disabled]="!loginForm.valid"
+      type="submit">Entrar</button>
+</form>

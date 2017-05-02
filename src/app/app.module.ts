@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
+import { ListsModule } from './lists/lists.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { LoginModule } from './login/login.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     SharedModule.forRoot(),
-    LoginModule
+    LoginModule,
+    ListsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
