@@ -1,0 +1,9 @@
+<div *ngIf="!loading" class="row">
+  <div class="col-xs-12">
+    <h3>
+      Se agregarán a la lista <b>{{list.getName()}}</b>
+    </h3>
+  </div>
+</div>
+
+<ll-search-movie *ngIf="!loading" (movies)="addMovies($event)"></ll-search-movie>

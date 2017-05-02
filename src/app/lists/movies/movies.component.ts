@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { List, MoviesList } from '../../model';
 import { ListService } from '../../shared/services';
@@ -13,7 +14,8 @@ export class MoviesComponent implements OnInit {
 
   private lists: List[];
 
-  constructor(public listService: ListService) { }
+  constructor(private router: Router,
+              public listService: ListService) { }
 
   ngOnInit() {
     this.lists = [];
@@ -21,13 +23,21 @@ export class MoviesComponent implements OnInit {
 
     this.listService.getObservable().subscribe(lists => {
       this.lists = lists;
-      this.filteredLists = lists;
+      this.filteredLists = this.lists;
     });
   }
 
   filterLists(term: string) {
     this.filteredLists = this.lists
       .filter(list => list.getName().indexOf(term) !== -1);
+  }
+
+  addMovies(list: List) {
+    this.router.navigate(['lists', 'add-movies', list.getId()]);
+  }
+
+  removeList(list: List) {
+    this.listService.remove(list);
   }
 
 }

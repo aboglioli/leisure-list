@@ -1,0 +1,30 @@
+:host {
+  width: 100%;
+}
+
+input {
+  border: 1px solid #eee;
+  flex: 10;
+  padding: 0.8rem 0.5rem;
+  width: 100%;
+}
+
+.result {
+  padding: 0.8rem 0.5rem;
+}
+
+.selected {
+  border: 1px solid #999;
+}
+
+.actions {
+  text-align: right;
+
+  button {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    color: #555;
+    flex: 0;
+    padding: 0.8rem 0.5rem;
+  }
+}

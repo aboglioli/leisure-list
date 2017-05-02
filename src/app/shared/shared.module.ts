@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 
 import { LoginService, TheMovieDbService, ListService, DatabaseService } from './services';
@@ -15,6 +16,7 @@ import { CardComponent } from './core/card/card.component';
   exports: [
     RouterModule,
     ReactiveFormsModule,
+    HttpModule,
     PanelComponent,
     CardComponent
   ],

@@ -17,8 +17,17 @@ export class ListService {
       this.lists = [];
 
       lists.forEach(list => {
-        this.lists.push(new MoviesList(list.name, list.$key));
+        const newList = new MoviesList(list.name, list.$key);
+
+        list.elements.forEach(element => {
+          newList.addElement(element);
+        });
+
+        this.lists.push(newList);
       });
+
+      console.log(lists);
+      console.log(this.lists);
 
       this.listsSource.next(this.lists);
     });
@@ -29,6 +38,13 @@ export class ListService {
 
   getObservable(): Observable<List[]> {
     return this.listsSource.asObservable();
+  }
+
+  findById(id: string): Observable<any> {
+    return this.database.lists
+      .map(lists => {
+        return lists.find(list => list.$key === id);
+      });
   }
 
   create(name: string, type: string): boolean {
@@ -73,6 +89,16 @@ export class ListService {
     this.lists = this.lists.filter(l => l.getId() !== list.getId());
 
     this.database.removeList(list);
+
+    this.listsSource.next(this.lists);
+  }
+
+  update(list: List) {
+    this.lists = this.lists.filter(l => l.getId() !== list.getId());
+
+    this.lists.push(list);
+
+    this.database.updateList(list);
 
     this.listsSource.next(this.lists);
   }

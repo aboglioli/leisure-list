@@ -23,13 +23,10 @@
   </div>
 
   <div class="col-xs-4" *ngFor="let list of filteredLists">
-    <ll-card>
-      <div title>
-        {{list.getName()}}
-      </div>
-      <div body>
-        Body
-      </div>
-    </ll-card>
+    <ll-movie-panel
+        (addMovies)="addMovies($event)"
+        (removeList)="removeList($event)"
+        [list]="list">
+    </ll-movie-panel>
   </div>
 </div>

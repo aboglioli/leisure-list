@@ -36,4 +36,9 @@ export class DatabaseService {
     this.af.database.list(`/${uid}/lists/${list.getId()}`).remove();
   }
 
+  updateList(list: List) {
+    const uid = this.loginService.getUserId();
+    this.af.database.list(`/${uid}/lists`).update(list.getId(), list);
+  }
+
 }

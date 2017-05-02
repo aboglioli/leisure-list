@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ListsComponent } from './lists/lists.component';
 import { MoviesComponent } from './movies/movies.component';
+import { AddMoviesComponent } from './add-movies/add-movies.component';
 import { GamesComponent } from './games/games.component';
 import { MusicComponent } from './music/music.component';
 
@@ -13,7 +14,11 @@ const routes: Routes = [
     children: [
       {
         path: 'movies',
-        component: MoviesComponent
+        component: MoviesComponent,
+      },
+      {
+        path: 'add-movies/:listId',
+        component: AddMoviesComponent
       },
       {
         path: 'games',

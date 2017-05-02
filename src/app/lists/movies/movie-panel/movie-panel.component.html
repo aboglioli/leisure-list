@@ -1,0 +1,16 @@
+<ll-card>
+  <div title>
+    {{list.getName()}}
+  </div>
+  <div body>
+    <ul>
+      <li *ngFor="let movie of list.getElements()">
+        (<i>{{movie.id}}</i>) {{movie.title}}
+      </li>
+    </ul>
+  </div>
+  <div actions>
+    <button (click)="addMovies.emit(list)">Agregar películas</button>
+    <button (click)="removeList.emit(list)">Eliminar</button>
+  </div>
+</ll-card>

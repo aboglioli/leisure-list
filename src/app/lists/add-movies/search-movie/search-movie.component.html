@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-12">
+    <ll-card>
+      <div title>
+        Buscar películas
+      </div>
+      <div body>
+        <input [formControl]="searchControl" placeholder="Buscar por nombre..."/>
+      </div>
+    </ll-card>
+  </div>
+</div>
+
+
+<div *ngIf="results && results.length > 0" class="row">
+  <div *ngFor="let movie of results"  class="col-xs-3">
+    <ll-panel (click)="movie.selected = !movie.selected">
+      <div [class.selected]="movie.selected" class="result">
+        {{movie.title}}
+      </div>
+    </ll-panel>
+  </div>
+</div>
+
+<div *ngIf="results && results.length > 0" class="row">
+  <div class="actions col-xs-12">
+    <button (click)="addMovies()">Agregar películas</button>
+  </div>
+</div>
