@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { List, MoviesList } from '../../model';
-import { ListService } from '../../shared/services';
+import { List, MoviesList } from '../model';
+import { ListService } from '../shared/services';
 
 @Component({
   selector: 'll-movies',
@@ -10,6 +10,7 @@ import { ListService } from '../../shared/services';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
+
   filteredLists: List[];
 
   private lists: List[];

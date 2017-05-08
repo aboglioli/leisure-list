@@ -9,7 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
-import { ListsModule } from './lists/lists.module';
+import { MoviesModule } from './movies/movies.module';
+import { GamesModule } from './games/games.module';
+import { MusicModule } from './music/music.module';
 
 import './operators';
 
@@ -25,7 +27,9 @@ import './operators';
     AngularFireModule.initializeApp(firebaseConfig),
     SharedModule.forRoot(),
     LoginModule,
-    ListsModule
+    MoviesModule,
+    GamesModule,
+    MusicModule
   ],
   providers: [],
   bootstrap: [AppComponent]
