@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { DatabaseService } from '../../shared/services/database.service';
-import { ListType, List, MoviesList } from '../../model';
+import { List, Movie } from '../../model';
 
 @Injectable()
 export class ListService {
@@ -17,10 +17,12 @@ export class ListService {
       this.lists = [];
 
       lists.forEach(list => {
-        const newList = new MoviesList(list.name, list.$key);
+        const newList = new List(list.name, list.$key);
 
         list.elements.forEach(element => {
-          newList.addElement(element);
+          // TODO: it should allow movies, games and music
+          const movie = new Movie(element);
+          newList.addElement(movie);
         });
 
         this.lists.push(newList);
@@ -54,24 +56,7 @@ export class ListService {
       .find(list => list.getName().toLowerCase() === name.toLowerCase());
 
     if(!existingList) {
-      let list;
-
-      switch(type) {
-      case 'movies':
-        list = new MoviesList(name);
-        break;
-      case 'games':
-        // TODO: implement GamesList
-        list = new MoviesList(name);
-        break;
-      case 'music':
-        // TODO: implement MusicList
-        list = new MoviesList(name);
-        break;
-      default:
-        list = new MoviesList(name);
-        break;
-      }
+      const list = new List(name);
 
       this.lists.push(list);
 

@@ -1,26 +1,12 @@
-export enum ListType {
-  MOVIES, GAMES, MUSIC
-}
+import { Element, ElementType } from './list-element';
 
-export interface List {
-  getId(): string,
-  setId(id: string),
-  getName(): string,
-  setName(name: string),
-  getType(): ListType,
-  addElement(element: any): boolean,
-  getElements(): any[]
-}
-
-export class MoviesList implements List {
+export class List {
   private id: string;
   private name: string;
-  private type: ListType;
-  private elements: any[];
+  private elements: Element[];
 
   constructor(name: string, id?: string){
     this.name = name;
-    this.type = ListType.MOVIES;
 
     if(id) {
       this.id = id;
@@ -45,11 +31,7 @@ export class MoviesList implements List {
     this.name = name;
   }
 
-  getType(): ListType {
-    return this.type;
-  }
-
-  addElement(element: any): boolean {
+  addElement(element: Element): boolean {
     const existingElement = this.elements.find(el => el === element);
 
     if(!existingElement) {
@@ -60,7 +42,15 @@ export class MoviesList implements List {
     return false;
   }
 
-  getElements(): any[] {
+  getElementById(id: string): Element {
+    return this.elements.find(element => element.getId() === id);
+  }
+
+  getElements(): Element[] {
     return this.elements;
+  }
+
+  getElementsByType(type: ElementType): Elements[] {
+    return this.elements.filter(element => element.getType() === type);
   }
 }
