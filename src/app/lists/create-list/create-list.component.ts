@@ -9,8 +9,6 @@ import { ListService } from '../../shared/services';
   styleUrls: ['./create-list.component.scss']
 })
 export class CreateListComponent implements OnInit {
-  @Input() listType: string;
-
   newListForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
@@ -20,12 +18,10 @@ export class CreateListComponent implements OnInit {
     this.newListForm = this.formBuilder.group({
       name: ['', Validators.required]
     });
-
-    this.listType = this.listType || 'movies';
   }
 
   createList() {
-    this.listService.create(this.newListForm.value.name, this.listType);
+    this.listService.create(this.newListForm.value.name);
   }
 
 }

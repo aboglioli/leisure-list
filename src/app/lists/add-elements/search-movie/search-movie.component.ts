@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+import { Element, Movie } from '../../../model';
 import { TheMovieDbService } from '../../../shared/services';
 
 @Component({
@@ -9,32 +10,25 @@ import { TheMovieDbService } from '../../../shared/services';
   styleUrls: ['./search-movie.component.scss']
 })
 export class SearchMovieComponent implements OnInit {
-  @Output() movies = new EventEmitter<any>();
+  @Output() elements = new EventEmitter<Element[]>();
 
-  searchControl: FormControl;
-  results: any[];
+  results: Element[];
 
   constructor(private moviesService: TheMovieDbService) { }
 
-  ngOnInit() {
-    this.searchControl = new FormControl();
+  ngOnInit() { }
 
-    this.searchControl.valueChanges
-      .debounceTime(400)
-      .distinctUntilChanged()
-      .subscribe(term => {
-        this.moviesService.search(term).subscribe(results => {
-          console.log(results);
-          this.results = results.results.map(result => {
-            result['selected'] = false;
-            return result;
-          });
-        });
+  search(term: string) {
+    this.moviesService.search(term).subscribe(results => {
+      console.log(results);
+      this.results = results.results.map(result => {
+        return new Movie(result);
       });
+    });
   }
 
-  addMovies() {
-    this.movies.emit(this.results.filter(result => result.selected));
+  addElements() {
+    this.elements.emit(this.results.filter(result => result.isSelected()));
   }
 
 }

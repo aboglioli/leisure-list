@@ -5,7 +5,7 @@
         Buscar películas
       </div>
       <div body>
-        <input [formControl]="searchControl" placeholder="Buscar por nombre..."/>
+        <ll-search-input placeholder="Búsqueda..." (search)="search($event)"></ll-search-input>
       </div>
     </ll-card>
   </div>
@@ -13,10 +13,10 @@
 
 
 <div *ngIf="results && results.length > 0" class="row">
-  <div *ngFor="let movie of results"  class="col-xs-3">
-    <ll-panel (click)="movie.selected = !movie.selected">
-      <div [class.selected]="movie.selected" class="result">
-        {{movie.title}}
+  <div *ngFor="let result of results"  class="col-xs-3">
+    <ll-panel (click)="result.isSelected() ? result.deselect() : result.select()">
+      <div [class.selected]="result.isSelected()" class="result">
+        {{result.getTitle()}}
       </div>
     </ll-panel>
   </div>
@@ -24,6 +24,6 @@
 
 <div *ngIf="results && results.length > 0" class="row">
   <div class="actions col-xs-12">
-    <button (click)="addMovies()">Agregar películas</button>
+    <button (click)="addElements()">Agregar elementos</button>
   </div>
 </div>

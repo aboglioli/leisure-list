@@ -12,7 +12,8 @@ import { SearchInputComponent } from './core/search-input/search-input.component
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
     RouterModule,

@@ -32,7 +32,7 @@ export class List {
   }
 
   addElement(element: Element): boolean {
-    const existingElement = this.elements.find(el => el === element);
+    const existingElement = this.elements.find(el => el.getId() === element.getId());
 
     if(!existingElement) {
       this.elements.push(element);
@@ -50,7 +50,7 @@ export class List {
     return this.elements;
   }
 
-  getElementsByType(type: ElementType): Elements[] {
+  getElementsByType(type: ElementType): Element[] {
     return this.elements.filter(element => element.getType() === type);
   }
 }

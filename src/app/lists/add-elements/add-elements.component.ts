@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { List, MoviesList } from '../../model';
+import { List, Element } from '../../model';
 import { ListService } from '../../shared/services';
 
 @Component({
@@ -11,7 +11,7 @@ import { ListService } from '../../shared/services';
   styleUrls: ['./add-elements.component.scss']
 })
 export class AddElementsComponent implements OnInit, OnDestroy {
-  list: MoviesList;
+  list: List;
   loading: boolean;
 
   private subscription: Subscription;
@@ -27,7 +27,7 @@ export class AddElementsComponent implements OnInit, OnDestroy {
       const listId = params['listId'];
 
       this.listService.findById(listId).subscribe(list => {
-        this.list = new MoviesList(list.name, list.$key);
+        this.list = list;
         this.loading = false;
       });
 
@@ -38,14 +38,14 @@ export class AddElementsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  addMovies(movies: any[]) {
-    movies.forEach(movie => {
-      this.list.addElement(movie);
+  addElements(elements: Element[]) {
+    elements.forEach(element => {
+      this.list.addElement(element);
     });
 
     this.listService.update(this.list);
 
-    this.router.navigate(['lists', 'movies']);
+    this.router.navigate(['lists']);
   }
 
 }

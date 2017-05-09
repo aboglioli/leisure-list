@@ -13,23 +13,8 @@ export class ListService {
   constructor(private database: DatabaseService) {
     this.lists = [];
 
-    this.database.lists.subscribe(lists => {
-      this.lists = [];
-
-      lists.forEach(list => {
-        const newList = new List(list.name, list.$key);
-
-        list.elements.forEach(element => {
-          // TODO: it should allow movies, games and music
-          const movie = new Movie(element);
-          newList.addElement(movie);
-        });
-
-        this.lists.push(newList);
-      });
-
-      console.log(lists);
-      console.log(this.lists);
+    this.database.getLists().subscribe(lists => {
+      this.lists = lists;
 
       this.listsSource.next(this.lists);
     });
@@ -42,16 +27,14 @@ export class ListService {
     return this.listsSource.asObservable();
   }
 
-  findById(id: string): Observable<any> {
-    return this.database.lists
+  findById(id: string): Observable<List> {
+    return this.database.getLists()
       .map(lists => {
-        return lists.find(list => list.$key === id);
+        return lists.find(list => list.getId() === id);
       });
   }
 
-  create(name: string, type: string): boolean {
-    type = type.toLowerCase();
-
+  create(name: string): boolean {
     const existingList = this.lists
       .find(list => list.getName().toLowerCase() === name.toLowerCase());
 

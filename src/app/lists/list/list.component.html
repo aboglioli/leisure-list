@@ -4,13 +4,13 @@
   </div>
   <div body>
     <ul>
-      <li *ngFor="let movie of list.getElements()">
-        (<i>{{movie.id}}</i>) {{movie.title}}
+      <li *ngFor="let element of list.getElements()">
+        (<i>{{element.getId()}}</i>) {{element.getTitle()}}
       </li>
     </ul>
   </div>
   <div actions>
-    <button (click)="addMovies.emit(list)">Agregar películas</button>
+    <button (click)="addElements.emit(list)">Agregar elementos</button>
     <button (click)="removeList.emit(list)">Eliminar</button>
   </div>
 </ll-card>

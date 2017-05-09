@@ -26,10 +26,10 @@
   </div>
 
   <div class="col-xs-4" *ngFor="let list of filteredLists">
-    <ll-movie-panel
-        (addMovies)="addMovies($event)"
+    <ll-list
+        (addElements)="addElements($event)"
         (removeList)="removeList($event)"
         [list]="list">
-    </ll-movie-panel>
+    </ll-list>
   </div>
 </div>
