@@ -6,11 +6,11 @@ import { List, MoviesList } from '../../model';
 import { ListService } from '../../shared/services';
 
 @Component({
-  selector: 'll-add-movies',
-  templateUrl: './add-movies.component.html',
-  styleUrls: ['./add-movies.component.scss']
+  selector: 'll-add-elements',
+  templateUrl: './add-elements.component.html',
+  styleUrls: ['./add-elements.component.scss']
 })
-export class AddMoviesComponent implements OnInit, OnDestroy {
+export class AddElementsComponent implements OnInit, OnDestroy {
   list: MoviesList;
   loading: boolean;
 

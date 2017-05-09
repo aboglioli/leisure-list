@@ -8,6 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { LoginService, TheMovieDbService, ListService, DatabaseService } from './services';
 import { PanelComponent } from './core/panel/panel.component';
 import { CardComponent } from './core/card/card.component';
+import { SearchInputComponent } from './core/search-input/search-input.component';
 
 @NgModule({
   imports: [
@@ -18,9 +19,10 @@ import { CardComponent } from './core/card/card.component';
     ReactiveFormsModule,
     HttpModule,
     PanelComponent,
-    CardComponent
+    CardComponent,
+    SearchInputComponent
   ],
-  declarations: [PanelComponent, CardComponent]
+  declarations: [PanelComponent, CardComponent, SearchInputComponent]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

@@ -11,7 +11,10 @@
     <ll-card>
       <div title>Filtrar</div>
       <div body>
-        <ll-search-list (search)="filterLists($event)"></ll-search-list>
+        <ll-search-input
+            placeholder="Nombre de la lista"
+            (search)="filterLists($event)">
+        </ll-search-input>
       </div>
     </ll-card>
   </div>
