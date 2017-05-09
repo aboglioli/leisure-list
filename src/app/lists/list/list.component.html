@@ -3,11 +3,7 @@
     {{list.getName()}}
   </div>
   <div body>
-    <ul>
-      <li *ngFor="let element of list.getElements()">
-        (<i>{{element.getId()}}</i>) {{element.getTitle()}}
-      </li>
-    </ul>
+    <ll-list-item *ngFor="let element of movies" [list]="list" [element]="element"></ll-list-item>
   </div>
   <div actions>
     <button (click)="addElements.emit(list)">Agregar elementos</button>

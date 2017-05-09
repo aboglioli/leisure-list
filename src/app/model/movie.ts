@@ -1,4 +1,5 @@
-import { Element, ElementType } from './list-element';
+import { Element } from './element';
+import { ElementType } from './element-type';
 import { TMDBMovie } from './the-movie-db';
 
 export class Movie implements Element {

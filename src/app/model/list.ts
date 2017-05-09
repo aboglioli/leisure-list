@@ -1,4 +1,5 @@
-import { Element, ElementType } from './list-element';
+import { Element } from './element';
+import { ElementType } from './element-type';
 
 export class List {
   private id: string;

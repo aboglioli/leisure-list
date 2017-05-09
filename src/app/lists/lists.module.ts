@@ -9,6 +9,7 @@ import { CreateListComponent } from './create-list/create-list.component';
 import { AddElementsComponent } from './add-elements/add-elements.component';
 import { ListComponent } from './list/list.component';
 import { SearchMovieComponent } from './add-elements/search-movie/search-movie.component';
+import { ListItemComponent } from './list/list-item/list-item.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { SearchMovieComponent } from './add-elements/search-movie/search-movie.c
     ListComponent,
     CreateListComponent,
     AddElementsComponent,
-    SearchMovieComponent
+    SearchMovieComponent,
+    ListItemComponent
   ]
 })
 export class ListsModule { }

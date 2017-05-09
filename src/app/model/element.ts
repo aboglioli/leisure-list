@@ -1,6 +1,4 @@
-export enum ElementType {
-  MOVIE, GAME, MUSIC
-}
+import { ElementType } from './element-type';
 
 export interface Element {
   getId(): string,
