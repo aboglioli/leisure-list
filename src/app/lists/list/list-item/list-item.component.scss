@@ -3,17 +3,24 @@
   display: flex;
   padding: 0.2rem;
 
-  .id {
-    background-color: #eee;
-    color: #aaa;
-    display: inline-block;
-    font-size: 0.5rem;
-    margin-right: 8px;
-    padding: 5px;
+  .icon  {
+    color: #555;
+    font-size: 0.8rem;
   }
 
   .title {
     display: inline-block;
     font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  .actions {
+    .detail {
+      color: #77f;
+    }
+
+    .remove {
+      color: #f77;
+    }
   }
 }

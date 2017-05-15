@@ -1,4 +1,18 @@
 <div class="list-item">
-  <span class="id">{{element.getId()}}</span>
+  <span class="icon">
+    <span [class]="'fa fa-' + icon"></span>
+  </span>
+
   <h3 class="title">{{element.getTitle()}}</h3>
+
+  <span class="flex"></span>
+
+  <div class="actions">
+    <button class="detail">
+      <span class="fa fa-info-circle"></span>
+    </button>
+    <button class="remove">
+      <span class="fa fa-minus-circle"></span>
+    </button>
+  </div>
 </div>

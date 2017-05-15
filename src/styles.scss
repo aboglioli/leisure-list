@@ -2,5 +2,9 @@
 @import "~reset-scss/reset";
 @import "~flexboxgrid";
 
+// FontAwesome (icons)
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
 @import "./styles/global";
 @import "./styles/form";

@@ -1,10 +1,14 @@
+:host {
+  width: 100%;
+}
+
 form {
   display: flex;
 
   input {
     border: 1px solid #eee;
     border-right: none;
-    flex: 10;
+    flex: 3;
     padding: 0.8rem 0.5rem;
   }
 
@@ -12,7 +16,7 @@ form {
     background-color: #eee;
     border: 1px solid #ddd;
     color: #555;
-    flex: 0;
+    flex: 1;
     padding: 0.8rem 0.5rem;
   }
 

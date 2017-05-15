@@ -1,5 +1,7 @@
 <form [formGroup]="newListForm" (submit)="$event.preventDefault(); createList()">
-  <input formControlName="name" placeholder="Nombre de la lista"/>
+  <input formControlName="name" placeholder="Nombre de nueva lista"/>
 
-  <button [disabled]="!newListForm.valid" type="submit">Crear</button>
+  <button [disabled]="!newListForm.valid" type="submit">
+    Crear
+  </button>
 </form>

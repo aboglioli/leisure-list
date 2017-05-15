@@ -21,10 +21,11 @@ input {
   text-align: right;
 
   button {
-    background-color: #eee;
-    border: 1px solid #ddd;
-    color: #555;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    color: #000;
     flex: 0;
-    padding: 0.8rem 0.5rem;
+    padding: 0.4rem 0.5rem;
+    box-shadow: 0 0 2px rgba(200, 200, 200, 0.5);
   }
 }
