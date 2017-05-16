@@ -17,6 +17,10 @@ export class Movie implements Element {
     this.data = data;
   }
 
+  getData(): any {
+    return this.data;
+  }
+
   getId(): string {
     return String(this.data.id);
   }
@@ -67,6 +71,10 @@ export class Movie implements Element {
 
   getImageUrl(): string {
     return this.data.poster_path;
+  }
+
+  getBackdropUrl(): string {
+    return this.data.backdrop_path || '';
   }
 
   select(): void {

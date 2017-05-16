@@ -19,11 +19,7 @@ export class SearchMovieComponent implements OnInit {
   search(term: string) {
     if(term && term.length > 3) {
       this.movieService.searchMulti(term).subscribe(results => {
-        const movieResults = results.map(result => {
-          return new Movie(result);
-        });
-
-        this.results.emit(movieResults);
+        this.results.emit(results);
       });
     } else {
       this.results.emit([]);

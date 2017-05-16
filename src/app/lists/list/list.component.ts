@@ -41,7 +41,7 @@ export class ListComponent implements OnInit {
   }
 
   goToDetail(element: Element) {
-    this.router.navigate(['detail', element.getId()]);
+    this.router.navigate(['detail', element.getMediaType(), element.getId()]);
   }
 
   removeElement(element: Element) {

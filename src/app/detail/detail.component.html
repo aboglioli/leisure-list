@@ -1,3 +1,47 @@
-<p>
-  detail works!
-</p>
+<div *ngIf="element">
+  <h1>
+    {{element.getTitle()}}
+  </h1>
+
+  <div class="row">
+    <div class="col-xs-4">
+      <ll-panel class="images">
+        <img *ngIf="element.hasImage()"
+             [alt]="element.getTitle()"
+             [src]="movieService.getImageUrl(element.getImageUrl(), false)"/>
+
+        <img *ngIf="element.getBackdropUrl()"
+             [alt]="element.getTitle()"
+             [src]="movieService.getImageUrl(element.getBackdropUrl(), false)"/>
+      </ll-panel>
+    </div>
+
+    <div class="col-xs-8 content">
+      <ll-card>
+        <div title>Género</div>
+        <div body>
+          {{element.getGenre()}}
+        </div>
+      </ll-card>
+      <ll-panel>
+        <div class="description">
+          {{element.getDescription()}}
+        </div>
+      </ll-panel>
+      <ll-card>
+        <div title>Lanzamiento</div>
+        <div body>
+          {{element.getReleaseDate()}}
+        </div>
+      </ll-card>
+      <ll-card>
+        <div title>Puntaje</div>
+        <div body>
+          {{element.getScore()}} / 10
+        </div>
+      </ll-card>
+    </div>
+  </div>
+
+
+</div>
