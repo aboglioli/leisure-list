@@ -18,6 +18,7 @@
       <div [class.selected]="result.isSelected()" class="result">
         {{result.getTitle()}}
       </div>
+      <img *ngIf="result.hasImage()" alt="" [src]="moviesService.getImageUrl(result.getImageUrl())"/>
     </ll-panel>
   </div>
 </div>

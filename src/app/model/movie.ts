@@ -53,6 +53,10 @@ export class Movie implements Element {
     return genres.join(', ');
   }
 
+  hasImage(): boolean {
+    return this.data.poster_path !== null;
+  }
+
   getImageUrl(): string {
     return this.data.poster_path;
   }
