@@ -25,7 +25,7 @@
     <h1>Mis listas</h1>
   </div>
 
-  <div class="col-xs-4" *ngFor="let list of filteredLists">
+  <div class="col-xs-6" *ngFor="let list of filteredLists">
     <ll-list
         (addElements)="addElements($event)"
         (removeList)="removeList($event)"

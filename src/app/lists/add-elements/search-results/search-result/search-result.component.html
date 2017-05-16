@@ -1,10 +1,11 @@
-<div class="element" [class.selected]="element.isSelected()">
+<div
+    class="element"
+    [class.selected]="element.isSelected()"
+    [class.no-image]="!element.hasImage()">
+
   <img *ngIf="element.hasImage()"
       [alt]="element.getTitle()"
       [src]="movieService.getImageUrl(element.getImageUrl())"/>
-
-  <div *ngIf="!element.hasImage()" class="no-image">
-  </div>
 
   <div class="element-detail">
     <h3 class="title">

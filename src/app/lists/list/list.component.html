@@ -1,10 +1,24 @@
 <ll-card>
 
-  <div title>
-    {{list.getName()}}
+  <div title class="title">
+    <h2 *ngIf="!renameMode">
+      {{list.getName()}}
+    </h2>
+
+    <input
+        *ngIf="renameMode"
+        [(ngModel)]="listName"
+        (keyup.enter)="rename()"
+        (focusout)="rename()" />
+
+    <button (click)="renameMode = true">
+      <span class="fa fa-pencil-square"></span>
+    </button>
   </div>
 
   <div body>
+    <p *ngIf="movies.length === 0">No hay elementos</p>
+
     <ll-list-item
         *ngFor="let element of movies"
         [list]="list"
@@ -14,7 +28,7 @@
     </ll-list-item>
   </div>
 
-  <div actions>
+  <div actions class="actions">
     <button (click)="addElements.emit(list)">Agregar elementos</button>
     <button (click)="removeList.emit(list)">Eliminar</button>
   </div>

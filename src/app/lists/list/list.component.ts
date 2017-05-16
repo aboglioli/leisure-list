@@ -14,6 +14,9 @@ export class ListComponent implements OnInit {
   @Output() removeList = new EventEmitter<List>();
   @Output() addElements = new EventEmitter<List>();
 
+  renameMode: boolean;
+  listName: string;
+
   movies: Element[];
   games: Element[];
   music: Element[];
@@ -23,6 +26,18 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.sortElementsByType();
+
+    this.listName = this.list.getName();
+  }
+
+  rename() {
+    if(this.listName && this.listName.length > 4) {
+      this.list.setName(this.listName);
+
+      this.listService.update(this.list);
+
+      this.renameMode = false;
+    }
   }
 
   goToDetail(element: Element) {

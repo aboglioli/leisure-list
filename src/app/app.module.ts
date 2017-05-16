@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
 import { ListsModule } from './lists/lists.module';
+import { DetailModule } from './detail/detail.module';
 
 import './operators';
 
@@ -25,7 +26,8 @@ import './operators';
     AngularFireModule.initializeApp(firebaseConfig),
     SharedModule.forRoot(),
     LoginModule,
-    ListsModule
+    ListsModule,
+    DetailModule
   ],
   providers: [],
   bootstrap: [AppComponent]

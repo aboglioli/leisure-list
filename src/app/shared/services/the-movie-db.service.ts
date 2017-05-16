@@ -34,12 +34,21 @@ export class TheMovieDbService {
                    partialUrl);
   }
 
-  search(query: string): Observable<any> {
+  searchMovie(query: string): Observable<any> {
     const search = this.createBaseSearchParams();
     search.set('query', query);
 
     return this.http.get(makeUrl(config.url, 'search/movie'), { search })
       .map(res => res.json());
+  }
+
+  searchMulti(query: string): Observable<any> {
+    const search = this.createBaseSearchParams();
+    search.set('query', query);
+
+    return this.http.get(makeUrl(config.url, 'search/multi'), { search })
+      .map(res => res.json())
+      .map(res => res.results.filter(r => r.media_type === 'movie' || r.media_type === 'tv'));
   }
 
   private createBaseSearchParams(): URLSearchParams {

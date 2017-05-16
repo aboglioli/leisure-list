@@ -1,12 +1,6 @@
 .element {
   position: relative;
 
-  .no-image {
-    background-color: #aaa;
-    height: 262px;
-    width: 185px;
-  }
-
   .element-detail {
     align-items: center;
     background: rgba(0, 0, 0, 0.75);
@@ -26,6 +20,7 @@
       display: block;
       font-size: 0.9rem;
       font-weight: bold;
+      line-height: 1.2;
       text-align: center;
     }
   }
@@ -34,6 +29,16 @@
     .element-detail {
       opacity: 1;
     }
+  }
+}
+
+.no-image {
+  background-color: #aaa;
+  height: 262px;
+  width: 185px;
+
+  .element-detail {
+    opacity: 1;
   }
 }
 

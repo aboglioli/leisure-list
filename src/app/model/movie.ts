@@ -21,8 +21,12 @@ export class Movie implements Element {
     return String(this.data.id);
   }
 
+  getMediaType(): string {
+    return this.data.media_type || '';
+  }
+
   getTitle(): string {
-    return this.data.original_title;
+    return this.data.original_title || this.data.name;
   }
 
   getAuthor(): string {
@@ -51,6 +55,10 @@ export class Movie implements Element {
     const genres = this.data.genres.map(g => g.name);
 
     return genres.join(', ');
+  }
+
+  getReleaseDate(): string {
+    return this.data.release_date || this.data.first_air_date;
   }
 
   hasImage(): boolean {

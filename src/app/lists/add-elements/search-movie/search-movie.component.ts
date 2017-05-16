@@ -17,13 +17,17 @@ export class SearchMovieComponent implements OnInit {
   ngOnInit() { }
 
   search(term: string) {
-    this.movieService.search(term).subscribe(results => {
-      const movieResults = results.results.map(result => {
-        return new Movie(result);
-      });
+    if(term && term.length > 3) {
+      this.movieService.searchMulti(term).subscribe(results => {
+        const movieResults = results.map(result => {
+          return new Movie(result);
+        });
 
-      this.results.emit(movieResults);
-    });
+        this.results.emit(movieResults);
+      });
+    } else {
+      this.results.emit([]);
+    }
   }
 
 }

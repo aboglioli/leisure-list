@@ -62,9 +62,13 @@ export class ListService {
   }
 
   update(list: List) {
-    this.lists = this.lists.filter(l => l.getId() !== list.getId());
+    this.lists = this.lists.map(l => {
+      if(l.getId() === list.getId()) {
+        return list;
+      }
 
-    this.lists.push(list);
+      return l;
+    });
 
     this.database.updateList(list);
 

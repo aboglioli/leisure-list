@@ -20,7 +20,11 @@ export class ListItemComponent implements OnInit {
   ngOnInit() {
     switch(this.element.getType()) {
       case ElementType.MOVIE:
-        this.icon = 'film';
+        if(this.element.getMediaType() === 'movie') {
+          this.icon = 'film';
+        } else {
+          this.icon = 'television';
+        }
         break;
       case ElementType.GAME:
         this.icon = 'gamepad';

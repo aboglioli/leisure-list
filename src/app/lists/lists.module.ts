@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ListsRoutingModule } from './lists-routing.module';
 import { ListsComponent } from './lists.component';
@@ -17,6 +18,7 @@ import { SearchResultComponent } from './add-elements/search-results/search-resu
   imports: [
     CommonModule,
     ListsRoutingModule,
+    FormsModule,
     SharedModule
   ],
   declarations: [

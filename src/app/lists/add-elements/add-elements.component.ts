@@ -42,7 +42,15 @@ export class AddElementsComponent implements OnInit, OnDestroy {
   }
 
   onSearchResults(results: Element[]) {
-    this.results = results;
+    // keep selected movies
+    this.results = this.results
+      ? this.results.filter(result => result.isSelected())
+      : [];
+
+    this.results = [
+      ...this.results,
+      ...results
+    ];
   }
 
   onSelectedElements(elements: Element[]) {
