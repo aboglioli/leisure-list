@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { LoginService } from './shared/services';
 
 @Component({
   selector: 'll-root',
@@ -9,12 +7,5 @@ import { LoginService } from './shared/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  constructor(private router: Router,
-              private loginService: LoginService) { }
-
-  logout() {
-    this.loginService.logout();
-    this.router.navigate(['/']);
-  }
+  constructor() { }
 }

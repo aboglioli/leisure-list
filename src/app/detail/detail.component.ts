@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { TheMovieDbService } from '../shared/services';
+import { TheMovieDbService, LoginService } from '../shared/services';
 import { Element } from '../model';
 
 @Component({
@@ -17,6 +17,7 @@ export class DetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private loginService: LoginService,
               public movieService: TheMovieDbService) { }
 
   ngOnInit() {
@@ -37,6 +38,11 @@ export class DetailComponent implements OnInit {
       }
 
     });
+  }
+
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/']);
   }
 
 }

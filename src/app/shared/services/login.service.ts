@@ -8,7 +8,9 @@ export class LoginService {
 
   constructor(private fb: AngularFire) {
     this.getState().subscribe(user => {
-      this.uid = user.uid;
+      if(user && user.uid) {
+        this.uid = user.uid;
+      }
     });
   }
 

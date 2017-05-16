@@ -1,3 +1,39 @@
+.lists-navbar {
+  display: flex;
+  padding: 1rem;
+
+  .menu-list {
+    overflow: hidden;
+
+    .list-item {
+      float: left;
+      margin-right: 5px;
+
+      .btn {
+        background: #f6f7f9;
+        border: 1px solid #dddfe2;
+        border-radius: 2px;
+        color: #4b4f56;
+        padding: 0.5rem 1rem;
+
+      }
+
+      .active {
+        background: #f2f2f2;
+        border-color: #aaa;
+        color: #000;
+      }
+
+      .disabled {
+        background: #e6e7e9;
+        border: none;
+        color: #aaa;
+      }
+
+    }
+  }
+}
+
 .images {
   img {
     margin-bottom: 5px;
