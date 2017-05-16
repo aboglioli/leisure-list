@@ -11,11 +11,10 @@ before_install:
   - npm install -g surge
 
 before_script:
-  - npm clean cache
   - npm install
 
 script:
-  - ng build --prod --aot=false
+  - ng build --prod
 
 after_success:
   - surge -p ./dist --domain leisure-list.surge.sh
