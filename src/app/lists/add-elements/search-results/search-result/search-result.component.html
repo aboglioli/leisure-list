@@ -1,0 +1,9 @@
+<ll-panel >
+
+  {{element.getTitle()}}
+
+  <img *ngIf="element.hasImage()"
+      alt=""
+      [src]="movieService.getImageUrl(element.getImageUrl())"/>
+
+</ll-panel>

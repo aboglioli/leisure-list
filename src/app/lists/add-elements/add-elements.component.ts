@@ -14,6 +14,8 @@ export class AddElementsComponent implements OnInit, OnDestroy {
   list: List;
   loading: boolean;
 
+  results: Element[];
+
   private subscription: Subscription;
 
   constructor(private route: ActivatedRoute,
@@ -23,6 +25,7 @@ export class AddElementsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loading = true;
 
+    // TODO: params (Observable) should auto-unsubscribe (but it has a bug)
     this.subscription = this.route.params.subscribe(params => {
       const listId = params['listId'];
 
@@ -38,7 +41,11 @@ export class AddElementsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  addElements(elements: Element[]) {
+  onSearchResults(results: Element[]) {
+    this.results = results;
+  }
+
+  onSelectedElements(elements: Element[]) {
     elements.forEach(element => {
       this.list.addElement(element);
     });

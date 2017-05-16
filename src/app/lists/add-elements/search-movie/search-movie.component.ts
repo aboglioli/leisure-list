@@ -10,25 +10,20 @@ import { TheMovieDbService } from '../../../shared/services';
   styleUrls: ['./search-movie.component.scss']
 })
 export class SearchMovieComponent implements OnInit {
-  @Output() elements = new EventEmitter<Element[]>();
+  @Output() results = new EventEmitter<Element[]>();
 
-  results: Element[];
-
-  constructor(public moviesService: TheMovieDbService) { }
+  constructor(private movieService: TheMovieDbService) { }
 
   ngOnInit() { }
 
   search(term: string) {
-    this.moviesService.search(term).subscribe(results => {
-      console.log(results);
-      this.results = results.results.map(result => {
+    this.movieService.search(term).subscribe(results => {
+      const movieResults = results.results.map(result => {
         return new Movie(result);
       });
-    });
-  }
 
-  addElements() {
-    this.elements.emit(this.results.filter(result => result.isSelected()));
+      this.results.emit(movieResults);
+    });
   }
 
 }

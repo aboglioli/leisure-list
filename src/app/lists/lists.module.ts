@@ -10,6 +10,8 @@ import { AddElementsComponent } from './add-elements/add-elements.component';
 import { ListComponent } from './list/list.component';
 import { SearchMovieComponent } from './add-elements/search-movie/search-movie.component';
 import { ListItemComponent } from './list/list-item/list-item.component';
+import { SearchResultsComponent } from './add-elements/search-results/search-results.component';
+import { SearchResultComponent } from './add-elements/search-results/search-result/search-result.component';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { ListItemComponent } from './list/list-item/list-item.component';
     CreateListComponent,
     AddElementsComponent,
     SearchMovieComponent,
-    ListItemComponent
+    ListItemComponent,
+    SearchResultsComponent,
+    SearchResultComponent
   ]
 })
 export class ListsModule { }

@@ -1,3 +1,4 @@
+<!-- TODO: search movies, games and music at same time -->
 <div class="row">
   <div class="col-xs-12">
     <ll-card>
@@ -5,26 +6,11 @@
         Buscar películas
       </div>
       <div body>
-        <ll-search-input placeholder="Búsqueda..." (search)="search($event)"></ll-search-input>
+        <ll-search-input
+            placeholder="Búsqueda..."
+            (search)="search($event)">
+        </ll-search-input>
       </div>
     </ll-card>
-  </div>
-</div>
-
-
-<div *ngIf="results && results.length > 0" class="row">
-  <div *ngFor="let result of results"  class="col-xs-3">
-    <ll-panel (click)="result.isSelected() ? result.deselect() : result.select()">
-      <div [class.selected]="result.isSelected()" class="result">
-        {{result.getTitle()}}
-      </div>
-      <img *ngIf="result.hasImage()" alt="" [src]="moviesService.getImageUrl(result.getImageUrl())"/>
-    </ll-panel>
-  </div>
-</div>
-
-<div *ngIf="results && results.length > 0" class="row">
-  <div class="actions col-xs-12">
-    <button (click)="addElements()">Agregar elementos</button>
   </div>
 </div>

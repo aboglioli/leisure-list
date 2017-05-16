@@ -20,7 +20,6 @@ export class DatabaseService {
       })
       .map(lists => {
         return lists.map(list => {
-          console.log(list);
           const newList = new List(list.name, list.$key);
 
           if(list.elements) {

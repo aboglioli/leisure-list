@@ -22,7 +22,6 @@ export class MyListsComponent implements OnInit {
     this.filteredLists = [];
 
     this.listService.getObservable().subscribe(lists => {
-      console.log(lists);
       this.lists = lists;
       this.filteredLists = this.lists;
     });

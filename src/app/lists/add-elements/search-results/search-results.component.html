@@ -1,0 +1,26 @@
+<div *ngIf="results && results.length === 0" class="row">
+  <div class="col-xs-12">
+    <ll-panel>
+      No hay resultados
+    </ll-panel>
+  </div>
+</div>
+
+<div *ngIf="results && results.length > 0" class="row">
+  <div *ngFor="let result of results"  class="col-xs-3">
+
+    <ll-search-result
+        class="result"
+        [class.selected]="result.isSelected()"
+        [element]="result"
+        (click)="result.isSelected() ? result.deselect() : result.select()">
+    </ll-search-result>
+
+  </div>
+</div>
+
+<div *ngIf="results && results.length > 0" class="row">
+  <div class="actions col-xs-12">
+    <button (click)="selectElements()">Agregar elementos</button>
+  </div>
+</div>

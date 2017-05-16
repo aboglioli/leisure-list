@@ -6,4 +6,12 @@
   </div>
 </div>
 
-<ll-search-movie *ngIf="!loading" (elements)="addElements($event)"></ll-search-movie>
+<ll-search-movie
+    *ngIf="!loading"
+    (results)="onSearchResults($event)">
+</ll-search-movie>
+
+<ll-search-results
+    [results]="results"
+    (selectedElements)="onSelectedElements($event)">
+</ll-search-results>

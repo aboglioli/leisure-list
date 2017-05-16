@@ -47,11 +47,11 @@ export class List {
     return this.elements.find(element => element.getId() === id);
   }
 
-  getElements(): Element[] {
-    return this.elements;
-  }
-
   getElementsByType(type: ElementType): Element[] {
     return this.elements.filter(element => element.getType() === type);
+  }
+
+  getElements(): Element[] {
+    return this.elements;
   }
 }
