@@ -28,8 +28,10 @@ export class MyListsComponent implements OnInit {
   }
 
   filterLists(term: string) {
+    term = term.toLowerCase();
+
     this.filteredLists = this.lists
-      .filter(list => list.getName().indexOf(term) !== -1);
+      .filter(list => list.getName().toLowerCase().indexOf(term) !== -1);
   }
 
   addElements(list: List) {
