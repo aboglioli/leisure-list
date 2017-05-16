@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "6.9"
+
+branches:
+  only:
+    - master
+
+before_install:
+  - npm install -g @angular/cli
+  - npm install -g surge
+
+before_script:
+  - npm install
+
+script:
+  - ng build --prod
+
+after_success:
+  - surge -p ./dist --domain leisure-list.surge.sh

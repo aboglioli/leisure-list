@@ -1,5 +1,9 @@
 # LeisureList
 
+> Proyecto para la materia Programación Avanzada de FRM-UTN.
+
+[Open App](https://leisure-app.netlify.com)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
 
 ## Development server
