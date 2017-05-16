@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFire } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
 import { LoginService } from './login.service';
@@ -9,12 +9,12 @@ import { List, Movie } from '../../model';
 @Injectable()
 export class DatabaseService {
 
-  constructor(private af: AngularFire,
+  constructor(private afDatabase: AngularFireDatabase,
               private router: Router,
               private loginService: LoginService) { }
 
   getLists(): Observable<List[]> {
-    return this.loginService.getState()
+    return this.loginService.user
       .switchMap(user => {
         const uid = user && user.uid;
 
@@ -22,7 +22,7 @@ export class DatabaseService {
           this.loginService.logout();
           this.router.navigate(['/']);
         } else {
-          return this.af.database.list(`/${uid}/lists`);
+          return this.afDatabase.list(`/${uid}/lists`);
         }
 
         return Observable.of([]);
@@ -43,9 +43,9 @@ export class DatabaseService {
   }
 
   saveList(list: List) {
-    const uid = this.loginService.getUserId();
+    const uid = this.loginService.uid;
 
-    const key = this.af.database.list(`/${uid}/lists`).push({
+    const key = this.afDatabase.list(`/${uid}/lists`).push({
       name: list.getName(),
       elements: list.getElements()
     }).key;
@@ -54,14 +54,15 @@ export class DatabaseService {
   }
 
   removeList(list: List) {
-    const uid = this.loginService.getUserId();
+    const uid = this.loginService.uid;
 
-    this.af.database.list(`/${uid}/lists/${list.getId()}`).remove();
+    this.afDatabase.list(`/${uid}/lists/${list.getId()}`).remove();
   }
 
   updateList(list: List) {
-    const uid = this.loginService.getUserId();
-    this.af.database.list(`/${uid}/lists`).update(list.getId(), {
+    const uid = this.loginService.uid;
+
+    this.afDatabase.list(`/${uid}/lists`).update(list.getId(), {
       name: list.getName(),
       elements: list.getElements()
     });

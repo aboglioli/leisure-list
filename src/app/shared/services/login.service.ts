@@ -1,41 +1,30 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LoginService {
-  private loggedIn: boolean;
-  private uid: string;
+  private _uid: string;
 
-  constructor(private fb: AngularFire) {
-    this.getState().subscribe(user => {
-      if(user && user.uid) {
-        this.uid = user.uid;
-      }
-    });
+  constructor(private afAuth: AngularFireAuth) {
+    this.user.subscribe(user => this._uid = user.uid);
   }
 
-  getUserId(): string {
-    return this.uid;
+  get user(): Observable<firebase.User> {
+    return this.afAuth.authState;
   }
 
-  getState() {
-    return this.fb.auth.asObservable();
+  get uid(): string {
+    return this._uid;
   }
 
-  isLoggedIn(): boolean {
-    return this.loggedIn;
+  async login(email: string, password: string) {
+    return await this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  login(email: string, password: string) {
-    this.fb.auth.login({email, password},
-      {
-        provider: AuthProviders.Password,
-        method: AuthMethods.Password
-      });
-  }
-
-  logout() {
-    this.fb.auth.logout();
+  async logout() {
+    return await this.afAuth.auth.signOut();
   }
 
 }

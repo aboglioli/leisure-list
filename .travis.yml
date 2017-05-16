@@ -14,7 +14,7 @@ before_script:
   - npm install
 
 script:
-  - ng build --prod
+  - npm run prod
 
 after_success:
   - surge -p ./dist --domain leisure-list.surge.sh

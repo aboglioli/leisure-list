@@ -9,6 +9,8 @@ import { LoginService, TheMovieDbService, ListService, DatabaseService } from '.
 import { PanelComponent } from './core/panel/panel.component';
 import { CardComponent } from './core/card/card.component';
 import { SearchInputComponent } from './core/search-input/search-input.component';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @NgModule({
   imports: [
@@ -33,7 +35,9 @@ export class SharedModule {
         LoginService,
         ListService,
         TheMovieDbService,
-        DatabaseService
+        DatabaseService,
+        AngularFireAuth,
+        AngularFireDatabase
       ]
     };
   }

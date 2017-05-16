@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { AuthProviders } from 'angularfire2';
 
 import { LoginService } from '../../shared/services';
 
@@ -29,11 +28,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.loading = true;
 
-    this.loginSubscription = this.loginService.getState().subscribe(user => {
-      if(user && user.provider === AuthProviders.Password
-         && user.auth.email
-         && !user.anonymous) {
-        // logged in
+    this.loginSubscription = this.loginService.user.subscribe(user => {
+      if(user && user.email) {
         this.loading = false;
 
         this.router.navigate(['lists']);
