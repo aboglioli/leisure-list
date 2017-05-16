@@ -8,7 +8,9 @@
     <ll-list-item
         *ngFor="let element of movies"
         [list]="list"
-        [element]="element">
+        [element]="element"
+        (detail)="goToDetail($event)"
+        (remove)="removeElement($event)">
     </ll-list-item>
   </div>
 

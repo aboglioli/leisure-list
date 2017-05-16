@@ -47,6 +47,8 @@ export class AddElementsComponent implements OnInit, OnDestroy {
 
   onSelectedElements(elements: Element[]) {
     elements.forEach(element => {
+      element.deselect();
+
       this.list.addElement(element);
     });
 

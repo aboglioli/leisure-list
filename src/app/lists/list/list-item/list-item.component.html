@@ -8,10 +8,10 @@
   <span class="flex"></span>
 
   <div class="actions">
-    <button class="detail">
+    <button (click)="detail.emit(element)" class="detail">
       <span class="fa fa-info-circle"></span>
     </button>
-    <button class="remove">
+    <button (click)="remove.emit(element)" class="remove">
       <span class="fa fa-minus-circle"></span>
     </button>
   </div>

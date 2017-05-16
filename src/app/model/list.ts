@@ -43,6 +43,18 @@ export class List {
     return false;
   }
 
+  removeElement(element: Element): boolean {
+    const existingElement = this.elements.find(el => el.getId() === element.getId());
+
+    if(!existingElement) {
+      return false;
+    }
+
+    this.elements = this.elements.filter(el => el.getId() !== element.getId());
+
+    return true;
+  }
+
   getElementById(id: string): Element {
     return this.elements.find(element => element.getId() === id);
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { List, Element, ElementType } from '../../../model';
 
@@ -10,6 +10,8 @@ import { List, Element, ElementType } from '../../../model';
 export class ListItemComponent implements OnInit {
   @Input() list: List;
   @Input() element: Element;
+  @Output() detail = new EventEmitter<Element>();
+  @Output() remove = new EventEmitter<Element>();
 
   icon: string;
 

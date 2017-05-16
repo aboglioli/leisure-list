@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { List, Element, ElementType } from '../../model';
+import { ListService } from '../../shared/services';
 
 @Component({
   selector: 'll-list',
@@ -16,9 +18,26 @@ export class ListComponent implements OnInit {
   games: Element[];
   music: Element[];
 
-  constructor() { }
+  constructor(private router: Router,
+              private listService: ListService) { }
 
   ngOnInit() {
+    this.sortElementsByType();
+  }
+
+  goToDetail(element: Element) {
+    this.router.navigate(['detail', element.getId()]);
+  }
+
+  removeElement(element: Element) {
+    this.list.removeElement(element);
+
+    this.listService.update(this.list);
+
+    this.sortElementsByType();
+  }
+
+  private sortElementsByType() {
     this.movies = this.list.getElementsByType(ElementType.MOVIE);
   }
 
