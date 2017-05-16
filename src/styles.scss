@@ -6,5 +6,8 @@
 $fa-font-path: "../node_modules/font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
+// Ubuntu font
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
 @import "./styles/global";
 @import "./styles/form";

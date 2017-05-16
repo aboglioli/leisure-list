@@ -1,12 +1,20 @@
 <ll-card>
+
   <div title>
     {{list.getName()}}
   </div>
+
   <div body>
-    <ll-list-item *ngFor="let element of movies" [list]="list" [element]="element"></ll-list-item>
+    <ll-list-item
+        *ngFor="let element of movies"
+        [list]="list"
+        [element]="element">
+    </ll-list-item>
   </div>
+
   <div actions>
     <button (click)="addElements.emit(list)">Agregar elementos</button>
     <button (click)="removeList.emit(list)">Eliminar</button>
   </div>
+
 </ll-card>

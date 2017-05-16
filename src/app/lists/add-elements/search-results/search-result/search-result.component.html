@@ -1,9 +1,15 @@
-<ll-panel >
-
-  {{element.getTitle()}}
-
+<div class="element" [class.selected]="element.isSelected()">
   <img *ngIf="element.hasImage()"
-      alt=""
+      [alt]="element.getTitle()"
       [src]="movieService.getImageUrl(element.getImageUrl())"/>
 
-</ll-panel>
+  <div *ngIf="!element.hasImage()" class="no-image">
+  </div>
+
+  <div class="element-detail">
+    <h3 class="title">
+      {{element.getTitle()}}
+    </h3>
+  </div>
+
+</div>

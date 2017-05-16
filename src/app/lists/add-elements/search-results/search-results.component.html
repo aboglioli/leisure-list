@@ -6,12 +6,10 @@
   </div>
 </div>
 
-<div *ngIf="results && results.length > 0" class="row">
-  <div *ngFor="let result of results"  class="col-xs-3">
+<div *ngIf="results && results.length > 0" class="row center-xs">
+  <div class="result" *ngFor="let result of results">
 
     <ll-search-result
-        class="result"
-        [class.selected]="result.isSelected()"
         [element]="result"
         (click)="result.isSelected() ? result.deselect() : result.select()">
     </ll-search-result>

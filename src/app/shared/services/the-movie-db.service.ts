@@ -9,20 +9,29 @@ import { TMDBConfiguration } from '../../model';
 @Injectable()
 export class TheMovieDbService {
   private config: TMDBConfiguration;
+  private smallImageSize: string;
+  private largeImageSize: string;
 
   constructor(private http: Http) {
     const search = this.createBaseSearchParams();
 
     this.http.get(makeUrl(config.url, 'configuration'), { search })
       .map(res => res.json())
-      .subscribe(res => this.config = res);
+      .subscribe(res => {
+        this.config = res;
+
+        this.smallImageSize = this.config.images.poster_sizes[2]; // 'w185'
+        this.largeImageSize = this.config.images.poster_sizes[4]; // 'w500'
+      });
   }
 
-  getImageUrl(partialUrl: string): string {
+  getImageUrl(partialUrl: string, smallSize = true): string {
     if(!partialUrl)
       return '';
 
-    return makeUrl(this.config.images.secure_base_url, 'w185', partialUrl);
+    return makeUrl(this.config.images.secure_base_url,
+                   smallSize ? this.smallImageSize : this.largeImageSize,
+                   partialUrl);
   }
 
   search(query: string): Observable<any> {
