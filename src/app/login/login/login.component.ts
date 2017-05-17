@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loading = true;
 
     this.loginSubscription = this.loginService.user.subscribe(user => {
-      if(user && user.email) {
+      if(user && user.email && user.uid) {
         this.loading = false;
 
         this.router.navigate(['lists']);

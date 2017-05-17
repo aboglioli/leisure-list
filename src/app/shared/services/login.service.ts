@@ -8,7 +8,13 @@ export class LoginService {
   private _uid: string;
 
   constructor(private afAuth: AngularFireAuth) {
-    this.user.subscribe(user => this._uid = user.uid);
+    this.user.subscribe(user => {
+      if(user && user.email && user.uid) {
+        this._uid = user.uid
+      } else {
+        this._uid = null;
+      }
+    });
   }
 
   get user(): Observable<firebase.User> {
@@ -19,12 +25,12 @@ export class LoginService {
     return this._uid;
   }
 
-  async login(email: string, password: string) {
-    return await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+  login(email: string, password: string) {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  async logout() {
-    return await this.afAuth.auth.signOut();
+  logout() {
+    return this.afAuth.auth.signOut();
   }
 
 }
